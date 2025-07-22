@@ -1,12 +1,28 @@
 import { NextResponse, NextRequest } from "next/server";
+import { createClient } from "@/lib/supabase/server";
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { name, desc, address } = body;
 
-    console.log(`Received: ${name}, ${desc}, ${address}`);
+    const supabase = createClient();
+    const { error } = await supabase
+      .from("users")
+      .insert([
+        { name, desc, address }
+      ]);
 
+    if (error) {
+      return NextResponse.json(
+        {
+          type: "error",
+          message: `Failed to create new user ${error}`
+        },
+        { status: 500 }
+      )
+    }
+    
     return NextResponse.json(
       {
         type: "success",

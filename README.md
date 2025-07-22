@@ -6,8 +6,10 @@ To use:
 2. Run `npm run dev`, as easy as that!
 
 ## Dependencies
-- `npm create-next-app@latest`
+- `npx create-next-app@latest`
 - `npm install axios`
+- `npm install @supabase/supabase-js`
+- `npm install @supabase/ssr`
 - `npx shadcn@latest init`
     - `npx shadcn@latest add input`
     - `npx shadcn@latest add label`

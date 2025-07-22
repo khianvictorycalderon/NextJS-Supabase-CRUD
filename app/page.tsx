@@ -4,6 +4,7 @@ import ReadSection from "../components/section/read";
 import UpdateSection from "../components/section/update";
 
 export default function Home() {
+
   return (
     <div className="p-4 md:p-8 w-full">
       <div className="text-center">

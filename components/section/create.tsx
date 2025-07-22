@@ -90,7 +90,7 @@ export default function CreateSection() {
 
     } catch (error) {
       setSubmitFeedback({
-        type: "success",
+        type: "error",
         message: `Submit failed: ${error}`
       });
     }
