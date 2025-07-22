@@ -1,7 +1,7 @@
-import CreateSection from "./section/create";
-import DeleteSection from "./section/delete";
-import ReadSection from "./section/read";
-import UpdateSection from "./section/update";
+import CreateSection from "../components/section/create";
+import DeleteSection from "../components/section/delete";
+import ReadSection from "../components/section/read";
+import UpdateSection from "../components/section/update";
 
 export default function Home() {
   return (
