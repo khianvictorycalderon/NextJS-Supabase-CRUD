@@ -6,10 +6,32 @@ import InputWithLabel from "../input_with_label";
 import axios from "axios";
 import { Button } from "../ui/button";
 
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
+
+interface SubmiFeedbackProps {
+  type: "default" | "success" | "warning" | "error";
+  message: string;
+}
+
+const FeedbackColors = {
+  default: "text-white",
+  success: "text-green-500",
+  warning: "text-yellow-400",
+  error: "text-red-600"
+}
+
 export default function CreateSection() {
   const [createName, setCreateName] = useState<string>("");
   const [createDesc, setCreateDesc] = useState<string>("");
   const [createAddress, setCreateAddress] = useState<string>("");
+  const [submitFeedback, setSubmitFeedback] = useState<SubmiFeedbackProps>({
+    type: "error",
+    message: ""
+  });
 
   const formData = [
     {
@@ -36,6 +58,20 @@ export default function CreateSection() {
   ];
 
   const handleSubmit = async () => {
+
+    // Validate first
+    if (!createName || !createDesc || !createAddress) {
+      setSubmitFeedback({
+        type: "error",
+        message: "Please fill all fields"
+      });
+      return;
+    }
+
+    setSubmitFeedback({
+      type: "default",
+      message: "Submitting..."
+    });
     
     try {
       const res = await axios.post("/api/users", {
@@ -47,10 +83,17 @@ export default function CreateSection() {
       setCreateName("");
       setCreateDesc("");
       setCreateAddress("");
-      alert(res.data.message);
+
+      setSubmitFeedback({
+        type: "success",
+        message: res.data.message
+      });
 
     } catch (error) {
-      console.error(`Axios error: ${error}`);
+      setSubmitFeedback({
+        type: "success",
+        message: `Submit failed: ${error}`
+      });
     }
   }
 
@@ -59,6 +102,11 @@ export default function CreateSection() {
       <h1 className="text-2xl">Create</h1>
       <div className="flex flex-col">
         <InputWithLabel Data={formData} />
+          {submitFeedback.message && (
+            <Alert className="text-center bg-transparent">
+              <AlertTitle className={`${FeedbackColors[submitFeedback.type]}`}>{submitFeedback.message}</AlertTitle>
+            </Alert>
+          )}
         <Button onClick={handleSubmit} className="mt-2 transition duration-300 bg-white text-black hover:bg-gray-400 hover:cursor-pointer">Create User</Button>
       </div>
     </div>
