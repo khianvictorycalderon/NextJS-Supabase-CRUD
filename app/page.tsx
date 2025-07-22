@@ -1,4 +1,7 @@
-import Create from "./section/create";
+import CreateSection from "./section/create";
+import DeleteSection from "./section/delete";
+import ReadSection from "./section/read";
+import UpdateSection from "./section/update";
 
 export default function Home() {
   return (
@@ -7,8 +10,11 @@ export default function Home() {
         <h1 className="text-4xl font-mono">Next.js + Supabase CRUD</h1>
         <p className="mt-2 font-mono">by <a className="text-purple-600 underline" href="https://khian.netlify.app/" target="_blank">Khian Victory D. Calderon</a></p>
       </div>
-      <hr className="mt-6 mb-4"/>
-      <Create/>
+      <hr className="mt-6"/>
+      <CreateSection/>
+      <ReadSection/>
+      <UpdateSection/>
+      <DeleteSection/>
     </div>
   )
 }
