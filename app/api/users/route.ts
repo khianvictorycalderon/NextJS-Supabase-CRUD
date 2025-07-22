@@ -1,6 +1,33 @@
 import { NextResponse, NextRequest } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
+export async function GET() {
+  const supabase = createClient();
+
+  const { data, error } = await supabase
+    .from("users")
+    .select("*"); // Selects everything
+
+  if (error) {
+    return NextResponse.json(
+      {
+        type: "error",
+        message: `Failed to fetch users: ${error.message}`
+      },
+      { status: 500 }
+    )
+  }
+
+  return NextResponse.json(
+    {
+      type: "success",
+      message: "Users fetched successfully!",
+      data
+    },
+    { status: 200 }
+  )
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();

@@ -10,24 +10,13 @@ import {
   Alert,
   AlertTitle,
 } from "@/components/ui/alert"
-
-interface SubmiFeedbackProps {
-  type: "default" | "success" | "warning" | "error";
-  message: string;
-}
-
-const FeedbackColors = {
-  default: "text-white",
-  success: "text-green-500",
-  warning: "text-yellow-400",
-  error: "text-red-600"
-}
+import { FeedbackColors, SubmitFeedbackProps } from "./props";
 
 export default function CreateSection() {
   const [createName, setCreateName] = useState<string>("");
   const [createDesc, setCreateDesc] = useState<string>("");
   const [createAddress, setCreateAddress] = useState<string>("");
-  const [submitFeedback, setSubmitFeedback] = useState<SubmiFeedbackProps>({
+  const [submitFeedback, setSubmitFeedback] = useState<SubmitFeedbackProps>({
     type: "error",
     message: ""
   });
