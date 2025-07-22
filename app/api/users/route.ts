@@ -8,7 +8,10 @@ export async function POST(req: NextRequest) {
     console.log(`Received: ${name}, ${desc}, ${address}`);
 
     return NextResponse.json(
-      { message: "Input received at server!" },
+      {
+        type: "success",
+        message: "Input received at server!"
+      },
       { status: 200 }
     );
 
@@ -16,7 +19,10 @@ export async function POST(req: NextRequest) {
 
     console.error("Error in POST handler:", error);
     return NextResponse.json(
-      { message: "Server error." },
+      { 
+        type: "error",
+        message: "Server error."
+      },
       { status: 500 }
     );
 

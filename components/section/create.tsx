@@ -8,7 +8,6 @@ import { Button } from "../ui/button";
 
 import {
   Alert,
-  AlertDescription,
   AlertTitle,
 } from "@/components/ui/alert"
 
@@ -85,7 +84,7 @@ export default function CreateSection() {
       setCreateAddress("");
 
       setSubmitFeedback({
-        type: "success",
+        type: res.data.type,
         message: res.data.message
       });
 
