@@ -3,7 +3,7 @@
 To use:
 1. `git pull` this repository
 2. Run `npm install`
-3. Create `.env.local` and setup your actual supabase configuration like this:
+3. Create `.env.local` in the project directory and setup your actual supabase configuration like this:
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://<your-actual-supabase-url>
 NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-actual-supabase-anon-key>
