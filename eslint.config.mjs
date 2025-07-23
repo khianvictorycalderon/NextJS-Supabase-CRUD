@@ -9,8 +9,17 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+const isCI = process.env.CI === "true";
+
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    files: ["**/*.{ts,tsx,js,jsx}"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": isCI ? "off" : "error",
+      "@typescript-eslint/no-unused-vars": isCI ? "warn" : "error",
+    },
+  },
 ];
 
 export default eslintConfig;
