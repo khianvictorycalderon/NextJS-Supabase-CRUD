@@ -1,6 +1,46 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
+export async function DELETE(
+    _: NextRequest,
+    context: { params: { id: string }}
+) {
+    const { id } = context.params;
+    const supabase = createClient();
+
+    const { data, error } = await supabase
+        .from("users")
+        .delete()
+        .eq("id", Number(id))
+        .select();
+
+    if (error) {
+        return NextResponse.json(
+            {
+                type: "error",
+                message: `Failed to delete: ${error.message}`
+            },
+            { status: 500 }
+        )
+    }
+
+    if (!data || data.length < 1) {
+        return NextResponse.json(
+            {
+                type: "error",
+                message: "User doesn't exist."
+            }
+        )
+    }
+
+    return NextResponse.json(
+        {
+            type: "success",
+            message: `User with ID ${id} deleted successfully!`
+        }
+    )
+}
+
 export async function PATCH(
   req: NextRequest,
   context: { params: { id: string } }
@@ -25,7 +65,7 @@ export async function PATCH(
   const { data, error } = await supabase
     .from("users")
     .update(fieldsToUpdate)
-    .eq("id", id)
+    .eq("id", Number(id))
     .select();
 
   if (error) {
