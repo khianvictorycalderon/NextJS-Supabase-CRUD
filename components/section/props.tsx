@@ -1,4 +1,4 @@
-`use client`;
+'use client'
 
 export interface SubmitFeedbackProps {
   type: "default" | "success" | "warning" | "error";
