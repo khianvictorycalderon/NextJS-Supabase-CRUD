@@ -10,22 +10,26 @@ interface InputWithLabelProps {
     Type: string;
     Pattern?: string;
   }[];
+  Style?: {
+    LabelStyle?: string;
+    InputStyle?: string;
+  }
 }
 
-export default function InputWithLabel({ Data }: InputWithLabelProps) {
+export default function InputWithLabel({ Data, Style }: InputWithLabelProps) {
   return (
     <>
       {Data.map((item, index) => (
         <div key={index} className="flex flex-col md:flex-row gap-2 my-2">
-          <Label htmlFor={item.Id} className="md:flex-1/10 md:flex md:justify-center">{item.Label}: </Label>
+          <Label htmlFor={item.Id} className={`${Style?.LabelStyle || "md:flex-1/10"} md:flex md:justify-center`}>{item.Label}: </Label>
           <Input
             id={item.Id}
             type={item.Type}
             pattern={item.Pattern || ""}
             value={item.Value}
             onChange={(e) => item.SetValue(e.target.value)}
-            className="md:flex-9/10 selection:bg-slate-700"
-            placeholder={`${item.Label}...`}
+            className={`${Style?.InputStyle || "md:flex-9/10"} selection:bg-slate-700`}
+            placeholder={`Enter ${item.Label.toLowerCase()}...`}
           />
         </div>
       ))}
