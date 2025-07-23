@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
-export async function DELETE(_: NextRequest) {
+export async function DELETE() {
   /*
   // This code resets the default id to 1 (Run this in the supabase sql editor)
     create or replace function delete_all_users_and_reset_id()

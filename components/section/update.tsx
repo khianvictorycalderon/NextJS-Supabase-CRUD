@@ -100,11 +100,13 @@ export default function UpdateSection () {
                     message: res.data.message || "Update failed."
                 });
             }
-        } catch (error: any) {
-            setSubmitFeedback({
-                type: "error",
-                message: `Request error: ${error?.response?.data?.message || error.message}`
-            });
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                setSubmitFeedback({
+                    type: "error",
+                    message: `Request error: ${error.message}`
+                });
+            }
         }
     };
 
