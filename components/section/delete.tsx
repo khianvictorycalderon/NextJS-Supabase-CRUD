@@ -58,11 +58,13 @@ export default function DeleteSection () {
                     message: req.data.message
                 });
             }
-        } catch (error: any) {
-            setSubmitFeedback({
-                type: "error",
-                message: `Failed to delete: ${error.message}`
-            });
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                setSubmitFeedback({
+                    type: "error",
+                    message: `Failed to delete: ${error.message}`
+                });
+            }
         }
 
     }
@@ -87,11 +89,13 @@ export default function DeleteSection () {
                     message: req.data.message
                 });
             }
-        } catch (error: any) {
-            setSubmitFeedback({
-                type: "error",
-                message: `Failed to delete: ${error.message}`
-            });
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                setSubmitFeedback({
+                    type: "error",
+                    message: `Failed to delete: ${error.message}`
+                });
+            }
         }
     }
 
