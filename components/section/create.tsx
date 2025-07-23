@@ -24,21 +24,21 @@ export default function CreateSection() {
   const formData = [
     {
       Label: "Name",
-      Id: "name",
+      Id: "create_name",
       Value: createName,
       SetValue: setCreateName,
       Type: "text",
     },
     {
       Label: "Description",
-      Id: "desc",
+      Id: "create_desc",
       Value: createDesc,
       SetValue: setCreateDesc,
       Type: "text",
     },
     {
       Label: "Address",
-      Id: "address",
+      Id: "create_address",
       Value: createAddress,
       SetValue: setCreateAddress,
       Type: "text",
