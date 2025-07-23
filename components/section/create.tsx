@@ -90,11 +90,11 @@ export default function CreateSection() {
       <h1 className="text-2xl">Create</h1>
       <div className="flex flex-col">
         <InputWithLabel Data={formData} />
-          {submitFeedback.message && (
-            <Alert className="text-center bg-transparent">
-              <AlertTitle className={`${FeedbackColors[submitFeedback.type]}`}>{submitFeedback.message}</AlertTitle>
-            </Alert>
-          )}
+        {submitFeedback.message && (
+          <Alert className="text-center bg-transparent">
+            <AlertTitle className={`${FeedbackColors[submitFeedback.type]}`}>{submitFeedback.message}</AlertTitle>
+          </Alert>
+        )}
         <Button onClick={handleSubmit} className="mt-2 transition duration-300 bg-white text-black hover:bg-gray-400 hover:cursor-pointer">Create User</Button>
       </div>
     </div>
