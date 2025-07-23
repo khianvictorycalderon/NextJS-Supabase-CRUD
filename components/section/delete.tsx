@@ -62,13 +62,37 @@ export default function DeleteSection () {
             setSubmitFeedback({
                 type: "error",
                 message: `Failed to delete: ${error.message}`
-            })
+            });
         }
 
     }
 
     const handleDeleteAllUser = async() => {
-        // I'll fill this later
+        setSubmitFeedback({
+            type: "default",
+            message: "Deleting all users..."
+        });
+
+        try {
+            const req = await axios.delete("/api/users");
+
+            if (req.data.type === "success") {
+                setSubmitFeedback({
+                    type: "success",
+                    message: req.data.message
+                });
+            } else {
+                setSubmitFeedback({
+                    type: "error",
+                    message: req.data.message
+                });
+            }
+        } catch (error: any) {
+            setSubmitFeedback({
+                type: "error",
+                message: `Failed to delete: ${error.message}`
+            });
+        }
     }
 
     return (
