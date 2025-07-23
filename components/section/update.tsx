@@ -111,7 +111,7 @@ export default function UpdateSection () {
     return (
         <div className="font-thin mt-4">
             <h1 className="text-2xl">Update</h1>
-            <InputWithLabel Data={formData} Style={{ LabelStyle: "flex-1/4", InputStyle: "flex-3/4" }}/>
+            <InputWithLabel Data={formData} Style={{ LabelStyle: "md:flex-1/4", InputStyle: "md:flex-3/4" }}/>
             {submitFeedback.message && (
             <Alert className="text-center bg-transparent">
                 <AlertTitle className={`${FeedbackColors[submitFeedback.type]}`}>{submitFeedback.message}</AlertTitle>
