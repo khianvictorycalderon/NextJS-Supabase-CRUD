@@ -2,11 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
 export async function DELETE(
-    _: Request,
+    req: NextRequest,
     context: { params: { id: string }}
 ) {
     const { id } = context.params;
     const supabase = createClient();
+
+    // Just so that the req variable was used
+    console.log(req.body);
 
     const { data, error } = await supabase
         .from("users")
