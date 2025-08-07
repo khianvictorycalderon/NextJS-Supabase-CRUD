@@ -11,7 +11,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-actual-supabase-anon-key>
 4. Run `npm run dev`, as easy as that!
 
 ## Dependencies
-- `npx create-next-app@latest`
 - `npm install axios`
 - `npm install @supabase/supabase-js`
 - `npm install @supabase/ssr`
